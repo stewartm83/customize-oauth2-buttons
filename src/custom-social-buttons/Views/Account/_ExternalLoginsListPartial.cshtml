@@ -1,0 +1,63 @@
+﻿@using Microsoft.Owin.Security
+@model custom_social_buttons.Models.ExternalLoginListViewModel
+
+<div class="text-center split-div">
+    <hr class="split-hr"/>
+    <span class="split-span">or sign up with</span>
+</div>
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() != 0)
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new {Model.ReturnUrl}))
+        {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (var p in loginProviders)
+                    {
+                        if (p.AuthenticationType == "Google")
+                        {
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-block btn-google" id="@p.AuthenticationType" name="provider">
+
+                                    <i class="fa fa-google-plus fa-align-left social-icon" style=""></i>Google
+                                </button>
+                            </div>
+                        }
+                        else if (p.AuthenticationType == "Facebook")
+                        {
+                            <div class="col-md-4">
+                                <button class="btn-block btn btn-facebook" type="submit" id="@p.AuthenticationType" name="provider">
+
+                                    <i class="fa fa-facebook fa-align-left social-icon"></i>Facebook
+                                </button>
+                            </div>
+                        }
+                        else if (p.AuthenticationType == "Twitter")
+                        {
+                            <div class="col-md-4">
+                                <button class="btn-block btn btn-twitter" type="submit" id="@p.AuthenticationType" name="provider">
+
+                                    <i class="fa fa-twitter fa-align-left social-icon"></i>Twitter
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-4">
+                                <button class="btn-block btn btn-linkedin" type="submit" id="@p.AuthenticationType" name="provider">
+
+                                    <i class="fa fa-life-buoy fa-align-left social-icon"></i>
+                                    Sign in with @p.Caption
+
+                                </button>
+                            </div>
+                        }
+                    }
+                </p>
+
+            </div>
+        }
+    }
+}
