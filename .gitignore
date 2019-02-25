@@ -1,29 +1,19 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
+obj/
+obj-debug/
+obj-release/
+packages/
 
-# Precompiled Headers
-*.gch
-*.pch
+# Other files and folders
+.settings/
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.
+.vs/
+Uploads/
+PublishProfiles/
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
